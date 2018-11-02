@@ -1,11 +1,26 @@
-<h1>Cocktails</h1>
 
-<ul>
-<% @cocktails.each do |cocktail| %>
-  <li><%= cocktail.name %></li> :::
-  <%= link_to "Details", cocktail_path(cocktail) %>
+<div>
+  <%= render 'shared/banner',
+  subtitle: "Mixology Master!",
+  banner_img: "https://static.standard.co.uk/s3fs-public/thumbnails/image/2016/09/30/10/cocktails.jpg"
+  %>
+</div>
 
-<% end %>
-</ul>
+<div class="container text-center">
+  <div class="row">
+      <h2>Cocktails</h2>
+      <% @cocktails.each do |cocktail| %>
+      <div class="col-xs-12 col-sm-6 col-md-3 card-space">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://static.standard.co.uk/s3fs-public/thumbnails/image/2016/09/30/10/cocktails.jpg')">
+          <div class="card-description">
+            <p><%= cocktail.name %></p>
+          </div>
+          <%= link_to "", cocktail_path(cocktail), class: 'card-link' %>
+        </div>
+      </div>
+      <% end %>
 
-<%= link_to "Add a Cocktail", new_cocktail_path  %>
+  </div>
+</div>
+
+

@@ -1,15 +1,19 @@
-<h2><%= @cocktail.name %></h2>
 
-<p>Details of cocktail will be here</p>
+<div class="container container-background">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-2">
+      <div class="show-container">
+      <h2 class = "show-header"><%= @cocktail.name %></h2>
 
-<% @cocktail.doses.each do |dose| %>
- <p><%= dose.ingredient.name %> | <%= dose.description %> | <%= link_to 'delete this description', dose_path(dose), method: :delete %></p>
-<% end %>
+      <% @cocktail.doses.each do |dose| %>
+      <h3 class = "show-paragraph"><%= dose.ingredient.name %> | <%= dose.description %> | <%= link_to 'delete this description', dose_path(dose), method: :delete , class: "btn btn-success"%></h3>
+      <% end %>
 
-<p><%= link_to "Edit Your Cocktail", edit_cocktail_path  %></p>
+      <p><%= link_to "Delete this cocktail", cocktail_path(@cocktail), method: :delete, data: { confirm: "Are you sure?"}, class: "show-paragraph"%></p>
 
-<p><%= link_to "Return to home page", cocktail_path %></p>
-
-<p><%= link_to "Delete this cocktail", cocktail_path(@cocktail), method: :delete, data: { confirm: "Are you sure?"}%></p>
-
+      <%= render "doses/form", cocktail: @cocktail, dose: Dose.new  %>
+    </div>
+    </div>
+  </div>
+</div>
 

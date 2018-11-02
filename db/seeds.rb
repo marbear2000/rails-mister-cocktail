@@ -1,7 +1,7 @@
 require 'open-uri'
 require 'json'
 
-Ingredient.delete_all
+Ingredient.destroy_all
 
 url = "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
 
